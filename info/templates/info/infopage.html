@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<h1>welcome </h1>
+<br>
+ <a href="http://127.0.0.1:8000/login/logout/">logout</a>
+<table class="table">
+    <thead>
+      <tr>
+
+        <th>name</th>
+        <th>email</th>
+        <th>password</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for a in users %}
+
+    <tr>
+
+        <td>{{a.name}}          </td>
+
+        <td>{{a.email}}        </td>
+        <td>{{a.password}}       </td>
+        <td><a href="http://127.0.0.1:8000/info/edit/{{a.id}}/">Edit</a></td>
+          <td><a href="http://127.0.0.1:8000/info/delete/{{a.id}}/">Delete</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>
