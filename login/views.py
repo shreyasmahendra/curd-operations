@@ -53,6 +53,7 @@ def operations(request):
         payload_data = {
             'id': u[0].id,
             'email': u[0].email,
+            'name': u[0].name,
         }
 
         token = jwt.encode(payload=payload_data, key ='secret', algorithm="HS256")
@@ -62,7 +63,7 @@ def operations(request):
         }
         return HttpResponse(json.dumps(response) ,status=200)
     else:
-        if request.method == 'GET':
+        if request.method != 'POST':
             return HttpResponse("method not allowed", status=405)
         else:
             return HttpResponseRedirect(reverse('login-page'))

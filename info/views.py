@@ -35,7 +35,6 @@ def edit(request, user_id):
 
 def update(request,user_id ):
     if request.method =='PUT':
-        return HttpResponse(status=200)
         print(request.content_type)
         if request.content_type == 'application/json':
             print(request.body)
@@ -90,8 +89,7 @@ def update(request,user_id ):
             password = body['password']
             User.objects.filter(id=user_id).update(password=password)
             return HttpResponse("password updated",status=201)
-                
-    return HttpResponse("sucess",status=200)            
+    return HttpResponse("sucess",status=200)
                 
          
             
@@ -149,7 +147,6 @@ def productList(request):
             
             product_name = request.POST['product_name']
             product_price = request.POST['product_price']
-          
     Product(product_name = product_name,product_price = product_price, user_id_id = request.user_id ).save() 
     return HttpResponse("sucess",status=200)
 
@@ -166,8 +163,7 @@ def pedit(request):
                     'id':user.id,
                     'product_name':user.product_name,
                     'product_price':user.product_price,
-       
-               })
+                })
     response["productcount"]= len(a)
     response["product"]= a
     return HttpResponse(json.dumps(response),content_type="application/json")
@@ -225,6 +221,6 @@ def productupdate(request):
 def productdelete(request,p_id):
     if request.method != 'DELETE':
         return HttpResponse("Method not allowed", status=405)
-        Product.objects.filter(user_id_id=request.user_id ,id = p_id).delete()
+    Product.objects.filter(user_id_id=request.user_id ,id = p_id).delete()
     return HttpResponse(status=204)
    
