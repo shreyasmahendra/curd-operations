@@ -6,7 +6,7 @@ from django.urls import reverse
 import json
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-
+from datetime import datetime
 
 from .form import *
 # Create your views here.
@@ -18,7 +18,10 @@ def register(request):
 
 def add(request):
     if request.method != 'POST':
-        return HttpResponse("Method not allowed" , status=405)
+        now = datetime.now()
+        print(now)
+        html = "<html><body>It is now {}</body></html>".format(now)
+        return HttpResponse(html,"Method not allowed" , status=405)
     
     print(request.content_type)
     if request.content_type == 'application/json':

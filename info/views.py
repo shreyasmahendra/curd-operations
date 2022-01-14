@@ -89,7 +89,7 @@ def update(request,user_id ):
             password = body['password']
             User.objects.filter(id=user_id).update(password=password)
             return HttpResponse("password updated",status=201)
-    return HttpResponse("sucess",status=200)
+    # return HttpResponse("sucess",status=200)
                 
          
             
@@ -167,7 +167,7 @@ def pedit(request):
     response["productcount"]= len(a)
     response["product"]= a
     return HttpResponse(json.dumps(response),content_type="application/json")
-    
+
 def getproduct(request,p_id):
     if request.method != 'GET':
         return HttpResponse("Method not allowed", status=405)
@@ -207,7 +207,7 @@ def productupdate(request):
             p_id  = i['id']
             product_name = i['product_name']
             product_price = i['product_price']
-            u = Product.objects.filter(user_id_id= request.user_id,id = p_id)
+            u = Product.objects.filter(user_id_id= request.user_id, id = p_id)
             if u.exists():
                 u.update(product_name = product_name,product_price =product_price)
                 
