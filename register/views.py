@@ -52,20 +52,20 @@ def add(request):
             return HttpResponse("please enter email", status=400)
         if 'password' not in request.POST:
             return HttpResponse("please enter password", status=400)
-        submitted_form = UploadImageForm(request.POST, request.FILES)
-        if submitted_form.is_valid():
-            submitted_form.save()
-        else:
-            alert_message = {
-                'status': False,
-                'message': 'Form data is invalid. Please check if your images / title is repeated'
-            }
-
-        form = UploadImageForm()
-        context = {
-            'form': form,
-            'images': User.objects.all
-        }
+        # submitted_form = UploadImageForm(request.POST, request.FILES)
+        # if submitted_form.is_valid():
+        #     submitted_form.save()
+        # else:
+        #     alert_message = {
+        #         'status': False,
+        #         'message': 'Form data is invalid. Please check if your images / title is repeated'
+        #     }
+        #
+        # form = UploadImageForm()
+        # context = {
+        #     'form': form,
+        #     'images': User.objects.all
+        # }
         name = request.POST['name']
         email = request.POST['email']
         password = request.POST['password']
@@ -74,7 +74,7 @@ def add(request):
         return HttpResponse( email+" already exist", status=409)
     
     User(name=name,email=email,password=password).save()
-    return HttpResponse(request, context)
+    return HttpResponseRedirect(reverse('login-page'))
 
 
 

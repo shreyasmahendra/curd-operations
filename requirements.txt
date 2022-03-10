@@ -1,0 +1,9 @@
+django
+djangorestframework
+jwt
+pyjwt
+mysqlclient
+django-phonenumber-field
+phonenumbers
+
+

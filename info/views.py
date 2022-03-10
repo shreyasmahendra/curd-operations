@@ -8,6 +8,7 @@ from .models import Product
 import jwt
 
 # Create your views here.
+
 def operation(request):
     if request.method != 'GET':
         return HttpResponse("method not allowed",status=405)
@@ -131,7 +132,6 @@ def productList(request):
             return HttpResponse("please enter the product_name", status=400)
         if 'product_price' not in body:
             return HttpResponse("please enter the product_price", status=400)
-
         product_name = body['product_name']
         product_price = body['product_price']
 

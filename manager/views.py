@@ -52,7 +52,7 @@ class department(View):
             department_name = request.POST['department_name']
             manager_name = request.POST['manager_name']
             mobile_number = request.POST['mobile_number']
-        Department(department_name=department_name,manager_name=manager_name,mobile_number=mobile_number).save()
+        Department(department_name=department_name,manager_name=manager_name,mobile_number=str(mobile_number)).save()
         return HttpResponse("sucess",status=200)    
     
     def put(self,request,d_id):
