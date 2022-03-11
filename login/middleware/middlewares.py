@@ -23,8 +23,6 @@ def my_middleware(get_response):
             request.user_id = user_id
             print(request.user_id)
             if not User.objects.filter(id=b['id']).exists():
-                #u= User.objects.filter(id=b['id'])
-                
                 print('Login redirect')
                 return HttpResponseRedirect(reverse('login-page'))
                 

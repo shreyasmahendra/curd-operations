@@ -48,7 +48,7 @@ class department(View):
                 return HttpResponse("please enter the manager name ", status=400)
             if 'mobile_number' not in request.POST:
                 return HttpResponse("please enter mobile number", status=400)
-                print(request.POST)
+
             department_name = request.POST['department_name']
             manager_name = request.POST['manager_name']
             mobile_number = request.POST['mobile_number']
